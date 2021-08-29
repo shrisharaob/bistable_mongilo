@@ -1,0 +1,28 @@
+Bootstrap: docker
+From: python:3.8.0-slim
+
+
+%runscript
+    python3 simulate.py
+
+%post
+    echo "Installing software and dependencies for the container"
+
+    # install python3 and tools
+    apt-get -y update
+    apt-get -y install build-essential libconfig++-dev libgsl-dev libconfig++
+    apt-get -y install python3 python3-pip python3-dev git wget xauth x11-apps evince
+
+    apt-get clean
+
+    pip3 install numpy pathlib ipdb matplotlib configobj scipy pathlib asyncio
+    # pip3 install pipenv
+    # pipenv install
+
+    # bash -c "cd src/cpp && python3 setup.py build --force"
+
+%environment
+    export LANG=C.UTF-8
+    export LC_ALL=C.UTF-8
+
+

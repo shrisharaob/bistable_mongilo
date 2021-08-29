@@ -1,0 +1,6 @@
+g++ -Ofast lif.c -lconfig++ -lgsl -lgslcblas -lm
+
+
+# c++ extenstion instalation 
+
+CC="g++ -lconfig++ -lgsl -stdlib=libc++" python setup.py build --force
